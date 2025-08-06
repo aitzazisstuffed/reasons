@@ -1,0 +1,150 @@
+# Clang-Tidy configuration for Reasons Decision Tree Debugger
+# Comprehensive static analysis for C99 codebase
+
+# Enabled check categories
+Checks: >
+  *,
+  -altera-*,
+  -android-*,
+  -fuchsia-*,
+  -google-*,
+  -llvm-*,
+  -llvmlibc-*,
+  -objc-*,
+  -zircon-*,
+  -modernize-use-trailing-return-type,
+  -modernize-use-auto,
+  -modernize-use-nodiscard,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-magic-numbers,
+  -readability-uppercase-literal-suffix,
+  -cert-err58-cpp,
+  -misc-unused-parameters,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  -bugprone-easily-swappable-parameters
+
+# Check options configuration
+CheckOptions:
+  # Naming conventions
+  readability-identifier-naming.VariableCase: snake_case
+  readability-identifier-naming.FunctionCase: snake_case
+  readability-identifier-naming.ParameterCase: snake_case
+  readability-identifier-naming.ConstantCase: UPPER_CASE
+  readability-identifier-naming.EnumConstantCase: UPPER_CASE
+  readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
+  readability-identifier-naming.TypedefCase: snake_case
+  readability-identifier-naming.StructCase: snake_case
+  readability-identifier-naming.UnionCase: snake_case
+  readability-identifier-naming.EnumCase: snake_case
+  readability-identifier-naming.GlobalConstantCase: UPPER_CASE
+  
+  # Global variable prefix for reasons project
+  readability-identifier-naming.GlobalVariablePrefix: 'g_'
+  readability-identifier-naming.StaticVariablePrefix: 's_'
+  readability-identifier-naming.MemberPrefix: ''
+  
+  # Function length limits
+  readability-function-size.LineThreshold: 80
+  readability-function-size.StatementThreshold: 50
+  readability-function-size.BranchThreshold: 15
+  readability-function-size.ParameterThreshold: 8
+  readability-function-size.NestingThreshold: 4
+  
+  # Cognitive complexity
+  readability-function-cognitive-complexity.Threshold: 25
+  
+  # Line length
+  readability-line-length.LineLength: 100
+  
+  # Braces around statements
+  readability-braces-around-statements.ShortStatementLines: 1
+  
+  # Else after return
+  readability-else-after-return.WarnOnUnfixable: false
+  
+  # Implicit conversions
+  readability-implicit-bool-conversion.AllowPointerConditions: true
+  readability-implicit-bool-conversion.AllowIntegerConditions: false
+  
+  # Performance checks
+  performance-faster-string-find.StringLikeClasses: 'std::basic_string'
+  performance-inefficient-vector-operation.EnableProto: false
+  
+  # Bugprone checks
+  bugprone-argument-comment.StrictMode: true
+  bugprone-assert-side-effect.AssertMacros: 'assert,ASSERT,REASONS_ASSERT'
+  bugprone-dangling-handle.HandleClasses: 'std::basic_string_view;std::experimental::basic_string_view'
+  bugprone-exception-escape.FunctionsThatShouldNotThrow: 'main'
+  bugprone-misplaced-widening-cast.CheckImplicitCasts: true
+  bugprone-sizeof-expression.WarnOnSizeOfConstant: true
+  bugprone-sizeof-expression.WarnOnSizeOfIntegerExpression: true
+  bugprone-sizeof-expression.WarnOnSizeOfThis: true
+  bugprone-string-constructor.WarnOnLargeLength: true
+  bugprone-string-constructor.LargeLengthThreshold: 0x800000
+  bugprone-suspicious-string-compare.WarnOnImplicitComparison: true
+  bugprone-suspicious-string-compare.WarnOnLogicalNotComparison: true
+  
+  # Cert checks
+  cert-dcl16-c.NewSuffixes: 'L;LL;LU;LLU'
+  cert-oop54-cpp.WarnOnlyIfThisHasSuspiciousField: false
+  
+  # Concurrency
+  concurrency-mt-unsafe.FunctionSet: 'posix'
+  
+  # HICPP checks
+  hicpp-multiway-paths-covered.WarnOnMissingElse: true
+  hicpp-signed-bitwise.IgnorePositiveIntegerLiterals: true
+  
+  # Misc checks
+  misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
+  misc-throw-by-value-catch-by-reference.CheckThrowTemporaries: true
+  
+  # Modernize (limited for C99)
+  modernize-avoid-bind.PermissiveParameterList: false
+  modernize-loop-convert.MaxCopySize: 16
+  modernize-loop-convert.MinConfidence: reasonable
+  modernize-pass-by-value.IncludeStyle: llvm
+  modernize-replace-auto-ptr.IncludeStyle: llvm
+  modernize-use-bool-literals.IgnoreMacros: true
+  modernize-use-default-member-init.UseAssignment: false
+  modernize-use-emplace.ContainersWithPushBack: 'std::vector;std::list;std::deque'
+  modernize-use-emplace.SmartPointers: 'std::shared_ptr;std::unique_ptr;std::auto_ptr;std::weak_ptr'
+  modernize-use-equals-default.IgnoreMacros: false
+  modernize-use-equals-delete.IgnoreMacros: false
+  modernize-use-nullptr.NullMacros: 'NULL'
+  
+  # Portability
+  portability-restrict-system-includes.Includes: '*'
+  portability-restrict-system-includes.AllowedIncludes: 'assert.h;ctype.h;errno.h;limits.h;signal.h;stdarg.h;stdbool.h;stddef.h;stdint.h;stdio.h;stdlib.h;string.h;time.h;unistd.h'
+  
+  # Readability
+  readability-avoid-const-params-in-decls.IgnoreMacros: true
+  readability-const-return-type.IgnoreMacros: true
+  readability-container-size-empty.ExcludedComparisonTypes: ''
+  readability-inconsistent-declaration-parameter-name.IgnoreMacros: true
+  readability-redundant-access-specifiers.CheckFirstDeclaration: false
+  readability-redundant-declaration.IgnoreMacros: false
+  readability-redundant-preprocessor.TokenKinds: 'identifier;literal;punctuator'
+  readability-simplify-boolean-expr.ChainedConditionalReturn: false
+  readability-simplify-boolean-expr.ChainedConditionalAssignment: false
+  readability-static-accessed-through-instance.NameSpecifierNestingThreshold: 3
+  readability-uppercase-literal-suffix.NewSuffixes: ''
+  readability-uppercase-literal-suffix.IgnoreMacros: true
+
+# Header filter - only check project files
+HeaderFilterRegex: '^(src|include)/.*\.(h|c)$'
+
+# Treat warnings as errors for CI
+WarningsAsErrors: ''
+
+# Format style (should match .clang-format)
+FormatStyle: file
+
+# System headers to ignore
+SystemHeaders: false
+
+# Use color output
+UseColor: true
+
+# Database location
+CompilationDatabase: ./build
