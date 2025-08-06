@@ -1,0 +1,185 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code files
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.cc text eol=lf
+*.cxx text eol=lf
+
+# Reasons DSL files
+*.reasons text eol=lf linguist-language=Reasons
+
+# Build system files
+Makefile text eol=lf
+*.mk text eol=lf
+CMakeLists.txt text eol=lf
+*.cmake text eol=lf
+meson.build text eol=lf
+*.build text eol=lf
+configure.ac text eol=lf
+*.ac text eol=lf
+*.am text eol=lf
+*.in text eol=lf
+
+# Configuration files
+*.conf text eol=lf
+*.config text eol=lf
+*.cfg text eol=lf
+*.ini text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+
+# Documentation files
+*.md text eol=lf
+*.txt text eol=lf
+*.rst text eol=lf
+*.adoc text eol=lf
+*.tex text eol=lf
+
+# Man pages
+*.1 text eol=lf
+*.2 text eol=lf
+*.3 text eol=lf
+*.4 text eol=lf
+*.5 text eol=lf
+*.6 text eol=lf
+*.7 text eol=lf
+*.8 text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
+
+# Windows scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Data files
+*.csv text eol=lf
+*.tsv text eol=lf
+*.xml text eol=lf
+*.sql text eol=lf
+
+# Web files (for documentation)
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.svg text eol=lf
+
+# Version control
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.gitmodules text eol=lf
+
+# CI/CD files
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
+.dockerignore text eol=lf
+
+# Package files
+*.pc.in text eol=lf
+*.spec text eol=lf
+PKGBUILD text eol=lf
+*.nsi text eol=lf
+
+# License and legal
+LICENSE text eol=lf
+COPYING text eol=lf
+COPYRIGHT text eol=lf
+NOTICE text eol=lf
+
+# Binary files (no conversion, no diff)
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.a binary
+*.lib binary
+*.o binary
+*.obj binary
+*.bin binary
+
+# Archives
+*.tar binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.rar binary
+*.bz2 binary
+*.xz binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Audio/Video (unlikely but just in case)
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.avi binary
+
+# Language statistics adjustments
+# Make .reasons files detectable as custom DSL
+*.reasons linguist-language=Reasons
+
+# Exclude generated files from language stats
+examples/generated/* linguist-generated=true
+docs/_build/* linguist-generated=true
+docs/html/* linguist-generated=true
+build/* linguist-generated=true
+dist/* linguist-generated=true
+
+# Mark test fixtures as vendored (don't count in stats)
+tests/fixtures/* linguist-vendored=true
+
+# Mark documentation examples as documentation
+docs/examples/* linguist-documentation=true
+examples/* linguist-documentation=true
+
+# Export ignore (files not included in git archive)
+.github export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+tools/ export-ignore
+scripts/test.sh export-ignore
+*.md export-ignore
+build/ export-ignore
+dist/ export-ignore
+
+# Diff settings for better code review
+*.c diff=c
+*.h diff=c
+*.cpp diff=cpp
+*.hpp diff=cpp
+
+# Custom diff for reasons files
+*.reasons diff=reasons
+
+# Merge settings
+*.reasons merge=ours
+
+# Filter settings for sensitive files (if any)
+# config.secret filter=git-crypt diff=git-crypt
+
+# End of file handling
+# Ensure files end with newline
+* text eol=lf -whitespace
