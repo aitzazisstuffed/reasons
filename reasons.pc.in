@@ -1,0 +1,39 @@
+# pkg-config file for Reasons Decision Tree Debugger
+# This file is processed by autotools/cmake/meson to generate reasons.pc
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+bindir=@bindir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+mandir=@mandir@
+
+# Package information
+Name: @PACKAGE_NAME@
+Description: @PACKAGE_DESCRIPTION@
+Version: @VERSION@
+URL: @PACKAGE_URL@
+
+# Compiler and linker flags for using reasons library
+Cflags: -I${includedir}/reasons @AM_CFLAGS@
+Libs: -L${libdir} -lreasons
+Libs.private: @READLINE_LIBS@ -lm
+
+# Requirements
+Requires:
+Requires.private:
+
+# Additional metadata
+reasons_bindir=${bindir}
+reasons_datadir=${datadir}/reasons
+reasons_examplesdir=${datadir}/reasons/examples
+reasons_mandir=${mandir}
+
+# Feature flags (set by build system)
+reasons_have_readline=@HAVE_READLINE@
+reasons_have_debug=@ENABLE_DEBUG@
+reasons_version_major=@VERSION_MAJOR@
+reasons_version_minor=@VERSION_MINOR@
+reasons_version_patch=@VERSION_PATCH@
