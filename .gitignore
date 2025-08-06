@@ -1,0 +1,185 @@
+# Build outputs
+build/
+dist/
+out/
+target/
+
+# Object files and compiled binaries
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Build system outputs
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.guess
+config.sub
+config.log
+config.status
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+missing
+compile
+reasons
+reasons-debug
+reasons-repl
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+_deps/
+
+# Meson
+builddir/
+.mesonbuild/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Development tools
+compile_commands.json
+.clangd/
+.cache/
+
+# Test outputs
+test_results.xml
+*.gcov
+*.gcda
+*.gcno
+coverage.info
+coverage/
+
+# Valgrind outputs
+vgcore.*
+*.supp
+
+# Address Sanitizer
+*.asan
+
+# Package management
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (if any tooling)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Documentation build outputs
+docs/_build/
+docs/html/
+docs/latex/
+*.pdf
+
+# REPL history and session files
+.reasons_history
+.repl_session
+repl-history/sessions/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+.#*
+
+# Log files
+*.log
+debug.log
+reasons.log
+
+# Configuration overrides
+config.local
+.env
+.env.local
+
+# Package files
+*.deb
+*.rpm
+*.pkg
+*.dmg
+*.msi
+*.tar.gz
+*.tar.xz
+*.zip
+
+# Profiling data
+gmon.out
+perf.data*
+*.prof
+
+# Core dumps
+core
+core.*
+
+# Generated documentation
+man/*.gz
+
+# Auto-generated files
+version.h
+config.h
+reasons.pc
+
+# Benchmark results
+benchmark_results/
+*.bench
+
+# Coverage reports
+lcov.info
+htmlcov/
+
+# Static analysis results
+scan-build-*/
+cppcheck-*/
+
+# Fuzzing artifacts
+fuzz_corpus/
+crash-*
+leak-*
+timeout-*
+
+# Local development
+local/
+scratch/
+playground/
+
+# OS-specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows specific
+*.pdb
+*.ilk
+*.exp
+
+# Linux specific
+*.so.*
+
+# Generated examples
+examples/generated/
+examples/*/output/
